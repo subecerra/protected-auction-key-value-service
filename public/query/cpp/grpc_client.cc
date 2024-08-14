@@ -36,6 +36,7 @@ std::unique_ptr<v2::KeyValueService::Stub> GrpcClient::CreateStub(
       grpc::CreateChannel(key_value_server_address, std::move(credentials)));
 }
 
+#HELLO TEST 2
 absl::StatusOr<v2::GetValuesResponse> GrpcClient::GetValues(
     const v2::GetValuesRequest& request) const {
   v2::GetValuesResponse response;
