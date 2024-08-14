@@ -37,9 +37,8 @@ std::unique_ptr<v2::KeyValueService::Stub> GrpcClient::CreateStub(
 }
 
 absl::StatusOr<v2::GetValuesResponse> GrpcClient::GetValues(
-    const v2::GetValuesRequest& request) const {
+    grpc::ClientContext& context, const v2::GetValuesRequest& request) const {
   v2::GetValuesResponse response;
-  grpc::ClientContext context;
   context.set_deadline(
       gpr_time_add(gpr_now(GPR_CLOCK_MONOTONIC),
                    gpr_time_from_millis(absl::ToInt64Milliseconds(deadline_),
